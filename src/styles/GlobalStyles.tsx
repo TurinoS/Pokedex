@@ -21,4 +21,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background-color: var(--bg-dark);
     }
+
+    main {
+        min-height: calc(100vh - 120px);
+    }
 `

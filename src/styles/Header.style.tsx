@@ -3,6 +3,7 @@ import { BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 
 export const StyledHeader = styled.header`
     background-color: var(--bg-light);
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
