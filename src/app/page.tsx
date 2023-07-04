@@ -1,18 +1,13 @@
 'use client'
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Wrapper from "@/styles/Wrapper.style";
 import { GlobalStyle } from "@/styles/GlobalStyles";
 
 export default function Home() {
   return (
-    <>
+    <Wrapper>
       <GlobalStyle />
-      <Header />
-      <main>
-        Hello WORLD!
-      </main>
-      <Footer />
-    </>
+      Hello WORLD!
+    </Wrapper>
   )
 }

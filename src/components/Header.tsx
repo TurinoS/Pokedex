@@ -1,7 +1,6 @@
 import { MoonIcon, StyledHeader, SunIcon } from "@/styles/Header.style";
 import Switch from "react-switch";
 
-
 export default function Header() {
     return(
         <StyledHeader>
@@ -12,7 +11,7 @@ export default function Header() {
                 checked={true}
                 checkedIcon={<MoonIcon />}
                 uncheckedIcon={<SunIcon />}
-                offColor="#e56d17"
+                offColor="#010446"
                 onColor="#010446"
             />
         </StyledHeader>

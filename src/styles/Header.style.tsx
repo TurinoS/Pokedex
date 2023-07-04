@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 5em;
+    padding: 0 5em;
     color: var(--orange);
 
     & input {
@@ -30,10 +30,11 @@ export const StyledHeader = styled.header`
 `;
 
 export const MoonIcon = styled(BsFillMoonStarsFill)`
-    margin: 6px 0 0 5px;
+    font-size: 18px;
+    margin: 5px 0 0 5px;
 `;
 
 export const SunIcon = styled(BsFillSunFill)`
-    font-size: 18px;
-    margin: 5px 0 0 7px;
+    font-size: 20px;
+    margin: 4px 0 0 7px;
 `;
