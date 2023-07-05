@@ -1,3 +1,5 @@
+import { ApiContextProvider } from "@/context/ContextApi"
+
 export const metadata = {
   title: 'Pokédex',
   description: 'Pokédex developed by Paulo Turino',
@@ -10,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ApiContextProvider>
+        <body>{children}</body>
+      </ApiContextProvider>
     </html>
   )
 }

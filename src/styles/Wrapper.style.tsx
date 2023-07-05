@@ -10,7 +10,7 @@ const StyledWrapper = styled.main`
 
 function Wrapper({ children }: {children: ReactNode}) {
     return(
-        <>
+       <> 
             <Header />
             <StyledWrapper>
                 {children}
