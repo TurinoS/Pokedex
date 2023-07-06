@@ -5,6 +5,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 interface AllPokemonData {
     name: string
     url: string
+    id: number
 }
 
 interface ApiContextProps {
@@ -20,8 +21,13 @@ export const ApiContextProvider = ({ children }: { children: ReactNode }) => {
     
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetch("https://pokeapi.co/api/v2/pokemon");
+          const data = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151");
           const dataJson = await data.json();
+
+          dataJson.results.forEach((item: AllPokemonData, index: number) => {
+            item.id = index + 1;
+          })
+
           setAllPokemonData(dataJson.results);
         };
         fetchData();
