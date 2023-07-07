@@ -5,20 +5,20 @@ import { GlobalStyle } from "@/styles/GlobalStyles";
 import Card from "@/components/Card";
 import { useContext } from "react";
 import { ApiContext } from "@/context/ContextApi";
+import StyledHome from "@/styles/Home.style";
 
 export default function Home() {
-  const { allPokemonData } = useContext(ApiContext)
-
-  console.log(allPokemonData)
+  const { eachPokemonData } = useContext(ApiContext)
 
   return (
     <Wrapper>
       <GlobalStyle />
-      <h2>Pokémons</h2>
-      {allPokemonData.map((pokemon, index) => (
+      <StyledHome>
+      {eachPokemonData.map((pokemon, index) => (
         
-        <Card key={index} name={pokemon.name} />
+        <Card key={index} name={pokemon.name} sprite={pokemon.sprites.front_default} types={pokemon.types} />
       ))}
+      </StyledHome>
     </Wrapper>
   )
 }
