@@ -22,7 +22,7 @@ interface PokemonData {
         front_default: string;
     };
     stats: {
-        base_stats: number;
+        base_stat: number;
         stat: {
             name: string;
         }
@@ -32,7 +32,8 @@ interface PokemonData {
             name: string;
         }
     }[];
-    weight: number
+    weight: number;
+    height: number
 }
 
 interface ApiContextProps {
