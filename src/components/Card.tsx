@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useContext } from "react";
 
 interface CardProps {
+    id: number
     name: string
     sprite: string
     types: {
@@ -13,6 +14,7 @@ interface CardProps {
             name: string;
         }
     }[];
+    onClick: () => void;
 }
 
 const colors: Record<string, string> = {
@@ -35,17 +37,17 @@ const colors: Record<string, string> = {
     fairy: "#D685AD",
 };
 
-export default function Card({ name, sprite, types }: CardProps) {
+export default function Card({ id, name, sprite, types, onClick }: CardProps) {
 
-    const { modalOpen, toggleModal } = useContext(ModalContext)
+    const { openModal } = useContext(ModalContext)
 
-    function openModal() {
-        toggleModal();
-        console.log(modalOpen)
-    }
+    const handleClick = () => {
+        openModal(id);
+        onClick();
+      };
 
     return(
-        <StyledCard onClick={openModal}>
+        <StyledCard onClick={handleClick}>
             <span>
                 <div>
                     <Image src={sprite} alt={`Imagem do ${name}`} width={120} height={120} />

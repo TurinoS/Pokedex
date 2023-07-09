@@ -1,9 +1,13 @@
 import Image from "next/image";
-import styled from "styled-components";
 import { useContext } from "react";
 import { ApiContext } from "@/context/ContextApi";
 import { ModalContext } from "@/context/ModalContext";
 import StyledModal from "@/styles/Modal.style";
+
+interface ModalProps {
+    id: number
+    onClick: () => void;
+}
 
 const colors: Record<string, string> = {
     normal: "#A8A77A",
@@ -25,25 +29,26 @@ const colors: Record<string, string> = {
     fairy: "#D685AD",
 };
 
-export default function Modal() {
+export default function Modal({ id, onClick }: ModalProps) {
     const { eachPokemonData } = useContext(ApiContext)
     const { toggleModal } = useContext(ModalContext)
 
-    function openModal() {
+    const handleCloseModal = () => {
         toggleModal();
-    }
+        onClick();
+      };
 
     return(
         <StyledModal>
-            <Image src={eachPokemonData[5].sprites.front_default} alt={eachPokemonData[5].name} width={200} height={200} />
-            <button onClick={openModal}>x</button>
-            <h2>{eachPokemonData[5].name}</h2>
+            <Image src={eachPokemonData[id].sprites.front_default} alt={eachPokemonData[id].name} width={200} height={200} />
+            <button onClick={handleCloseModal}>x</button>
+            <h2>{eachPokemonData[id].name}</h2>
             <div className="about-container">
-                <h3>Weight: <span>{eachPokemonData[5].weight/10} kg</span></h3>
-                <h3>Height: <span>{eachPokemonData[5].height/10} m</span></h3>
+                <h3>Weight: <span>{eachPokemonData[id].weight/10} kg</span></h3>
+                <h3>Height: <span>{eachPokemonData[id].height/10} m</span></h3>
                 <h3>Types:</h3>
                 <ul>
-                    {eachPokemonData[5].types.map((type, index) => (
+                    {eachPokemonData[id].types.map((type, index) => (
                     
                         <li key={index} style={{ backgroundColor: colors[type.type.name.toLowerCase()] }}>{type.type.name}</li>
                     
@@ -52,13 +57,13 @@ export default function Modal() {
             </div>
             <div className="abilities-container">
                 <h3>Abilities:</h3>
-                {eachPokemonData[5].abilities.map((ability, index) => (
+                {eachPokemonData[id].abilities.map((ability, index) => (
                     <p key={index}>{ability.ability.name}</p>
                 ))}
             </div>
             <div className="stats-container">
                 <h3>Stats:</h3>
-                {eachPokemonData[5].stats.map((stat, index) => (
+                {eachPokemonData[id].stats.map((stat, index) => (
                     <div className="stat-item" key={index}>
                         <span className="stat-name">{stat.stat.name}</span>
                         <div className="stat-bar">

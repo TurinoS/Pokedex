@@ -9,6 +9,7 @@ interface AllPokemonData {
 }
 
 interface PokemonData {
+    id: number
     name: string;
     abilities: {
         ability: {
