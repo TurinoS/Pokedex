@@ -1,5 +1,9 @@
+'use client'
+
+import { ModalContext } from "@/context/ModalContext";
 import StyledCard from "@/styles/Card.style";
 import Image from "next/image";
+import { useContext } from "react";
 
 interface CardProps {
     name: string
@@ -32,8 +36,16 @@ const colors: Record<string, string> = {
 };
 
 export default function Card({ name, sprite, types }: CardProps) {
+
+    const { modalOpen, toggleModal } = useContext(ModalContext)
+
+    function openModal() {
+        toggleModal();
+        console.log(modalOpen)
+    }
+
     return(
-        <StyledCard>
+        <StyledCard onClick={openModal}>
             <span>
                 <div>
                     <Image src={sprite} alt={`Imagem do ${name}`} width={120} height={120} />

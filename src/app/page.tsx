@@ -11,18 +11,12 @@ import Modal from "@/components/Modal";
 
 export default function Home() {
   const { eachPokemonData } = useContext(ApiContext)
-  const { modalOpen, toggleModal } = useContext(ModalContext)
-
-  function openModal() {
-    toggleModal();
-    console.log(modalOpen)
-  }
+  const { modalOpen } = useContext(ModalContext)
 
   return(
     <Wrapper>
       <GlobalStyle />
       <StyledHome>
-        <button onClick={openModal}>xxxxxx</button>
         {modalOpen ? <Modal /> : null}
         {eachPokemonData.map((pokemon, index) => (
           
