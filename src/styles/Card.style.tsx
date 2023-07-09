@@ -9,6 +9,14 @@ const StyledCard = styled.div`
     border: 2px solid var(--orange);
     border-radius: var(--border-radius);
     overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+      
+      & img {
+        transform: scale(1.2);
+      }
+    }
     
     & span {
         background-color: var(--bg-light);
