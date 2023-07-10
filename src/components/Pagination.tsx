@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { GrNext, GrPrevious } from 'react-icons/gr'
+import { useContext } from "react";
+import { ModalContext } from "@/context/ModalContext";
 
 interface PaginationProps {
     currentPage: number
@@ -35,11 +37,27 @@ const StyledPagination = styled.div`
 `
 
 export default function Pagination({ currentPage, previousPage, nextPage }: PaginationProps) {
+    const { toggleModal, modalOpen } = useContext(ModalContext);
+
+    function handleNextPage() {
+        if(modalOpen) {
+            toggleModal();
+        }
+        nextPage();
+    }
+
+    function handlePreviousPage() {
+        if(modalOpen) {
+            toggleModal();
+        }
+        previousPage();
+    }
+
     return(
         <StyledPagination>
-            <button onClick={previousPage}><GrPrevious /></button>
+            <button onClick={handlePreviousPage}><GrPrevious /></button>
             <span>Page {currentPage + 1} / 47</span>
-            <button onClick={nextPage}><GrNext /></button>
+            <button onClick={handleNextPage}><GrNext /></button>
         </StyledPagination>
     )
 }
