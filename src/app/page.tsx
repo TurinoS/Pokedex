@@ -24,12 +24,12 @@ export default function Home() {
   return (
     <Wrapper>
       <GlobalStyle />
-      <StyledHome>
         <Pagination
           currentPage={currentPage}
           nextPage={nextPage}
           previousPage={previousPage}
         />
+      <StyledHome>
         {modalOpen && desiredPokemonId !== null && (
           <Modal id={desiredPokemonId} onClick={handleCardModalClick} />
         )}
@@ -44,6 +44,11 @@ export default function Home() {
           />
         ))}
       </StyledHome>
+      <Pagination
+          currentPage={currentPage}
+          nextPage={nextPage}
+          previousPage={previousPage}
+        />
     </Wrapper>
   );
 }

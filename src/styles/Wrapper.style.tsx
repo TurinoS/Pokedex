@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 
 const StyledWrapper = styled.main`
     min-height: calc(100vh - 120px);
-    padding: 5vh 7.5vw;
+    padding: 3vh 7.5vw;
 `
 
 function Wrapper({ children }: {children: ReactNode}) {
