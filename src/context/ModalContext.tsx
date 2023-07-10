@@ -23,8 +23,7 @@ export const ModalContextProvider = ({ children }: { children: ReactNode }) => {
 
   const openModal = (id: number) => {
     toggleModal();
-    console.log(id)
-}
+  }
 
   return (
     <ModalContext.Provider value={{ modalOpen, toggleModal, openModal }}>

@@ -15,6 +15,8 @@ const StyledModal = styled.section`
     left: 25vw;
     border: 2px solid var(--orange);
     border-radius: var(--border-radius);
+    box-shadow: 5px 5px 10px 10px var(--shadow);
+    z-index: 5;
 
     & img {
         grid-area: img;
@@ -92,6 +94,7 @@ const StyledModal = styled.section`
 
     & .abilities-container {
         grid-area: abilities;
+        text-transform: capitalize;
     }
 
     & .stats-container {

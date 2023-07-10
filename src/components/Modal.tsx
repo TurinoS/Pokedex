@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ApiContext } from "@/context/ContextApi";
 import { ModalContext } from "@/context/ModalContext";
 import StyledModal from "@/styles/Modal.style";
@@ -38,17 +38,20 @@ export default function Modal({ id, onClick }: ModalProps) {
         onClick();
       };
 
+    const pokemon = eachPokemonData[id];
+    console.log(pokemon)
+
     return(
         <StyledModal>
-            <Image src={eachPokemonData[id].sprites.front_default} alt={eachPokemonData[id].name} width={200} height={200} />
+            <Image src={pokemon?.sprites.front_default} alt={pokemon.name} width={200} height={200} />
             <button onClick={handleCloseModal}>x</button>
-            <h2>{eachPokemonData[id].name}</h2>
+            <h2>{pokemon.name}</h2>
             <div className="about-container">
-                <h3>Weight: <span>{eachPokemonData[id].weight/10} kg</span></h3>
-                <h3>Height: <span>{eachPokemonData[id].height/10} m</span></h3>
+                <h3>Weight: <span>{pokemon.weight/10} kg</span></h3>
+                <h3>Height: <span>{pokemon.height/10} m</span></h3>
                 <h3>Types:</h3>
                 <ul>
-                    {eachPokemonData[id].types.map((type, index) => (
+                    {pokemon.types.map((type, index) => (
                     
                         <li key={index} style={{ backgroundColor: colors[type.type.name.toLowerCase()] }}>{type.type.name}</li>
                     
@@ -57,13 +60,13 @@ export default function Modal({ id, onClick }: ModalProps) {
             </div>
             <div className="abilities-container">
                 <h3>Abilities:</h3>
-                {eachPokemonData[id].abilities.map((ability, index) => (
+                {pokemon.abilities.map((ability, index) => (
                     <p key={index}>{ability.ability.name}</p>
                 ))}
             </div>
             <div className="stats-container">
                 <h3>Stats:</h3>
-                {eachPokemonData[id].stats.map((stat, index) => (
+                {pokemon.stats.map((stat, index) => (
                     <div className="stat-item" key={index}>
                         <span className="stat-name">{stat.stat.name}</span>
                         <div className="stat-bar">

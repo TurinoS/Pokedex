@@ -12,10 +12,7 @@ const StyledCard = styled.div`
 
     &:hover {
       cursor: pointer;
-      
-      & img {
-        transform: scale(1.2);
-      }
+      transform: scale(1.1);
     }
     
     & span {
