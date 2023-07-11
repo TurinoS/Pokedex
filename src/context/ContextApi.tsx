@@ -73,7 +73,6 @@ export const ApiContextProvider = ({ children }: { children: ReactNode }) => {
         `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
       );
       const dataJson = await data.json();
-
       setAllPokemonData(dataJson.results);
     };
     fetchData(itensPerPage, (currentPage * itensPerPage));
@@ -88,7 +87,6 @@ export const ApiContextProvider = ({ children }: { children: ReactNode }) => {
   function nextPage() {
     if (currentPage <= 46) {
       setCurrentPage(currentPage + 1);
-      console.log(eachPokemonData)
     }
   }
 
@@ -99,6 +97,7 @@ export const ApiContextProvider = ({ children }: { children: ReactNode }) => {
         const pokemons = allPokemonData[i];
         const response = await fetch(pokemons.url);
         const pokeData = await response.json();
+        pokeData.id = i + 1;
         setEachPokemonData((prevData) => [...prevData, pokeData]);
       }
     };

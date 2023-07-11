@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { ApiContext } from "@/context/ContextApi";
 import { ModalContext } from "@/context/ModalContext";
 import StyledModal from "@/styles/Modal.style";
+import { SearchContext } from "@/context/SearchContext";
 
 interface ModalProps {
     id: number
@@ -33,18 +34,24 @@ const colors: Record<string, string> = {
 export default function Modal({ id, onClick }: ModalProps) {
     const { eachPokemonData } = useContext(ApiContext)
     const { toggleModal } = useContext(ModalContext)
+    const { pokemonToTake, fetchFailed } = useContext(SearchContext)
 
     const handleCloseModal = () => {
         toggleModal();
         onClick();
       };
 
-    const pokemon = eachPokemonData[id];
-    console.log(pokemon)
+      const pokemon = pokemonToTake !== undefined && !fetchFailed ? pokemonToTake : eachPokemonData.find(
+        (p) => p.id === id
+      );
+
+    if (!pokemon) {
+        return null;
+      }
 
     return(
         <StyledModal>
-            <Image src={pokemon?.sprites.front_default} alt={pokemon.name} width={200} height={200} />
+            <Image src={pokemon.sprites.front_default} alt={pokemon.name} width={200} height={200} />
             <button onClick={handleCloseModal}>x</button>
             <h2>{pokemon.name}</h2>
             <div className="about-container">
@@ -54,7 +61,7 @@ export default function Modal({ id, onClick }: ModalProps) {
                 <ul>
                     {pokemon.types.map((type, index) => (
                     
-                        <li key={index} style={{ backgroundColor: colors[type.type.name.toLowerCase()] }}>{type.type.name}</li>
+                        <li key={index} style={{ backgroundColor: colors[type.type.name] }}>{type.type.name}</li>
                     
                     ))}
                 </ul>

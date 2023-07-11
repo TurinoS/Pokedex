@@ -21,7 +21,7 @@ export const ModalContextProvider = ({ children }: { children: ReactNode }) => {
     setModalOpen(!modalOpen);
   };
 
-  const openModal = (id: number) => {
+  const openModal = () => {
     toggleModal();
   }
 

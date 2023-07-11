@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 
 export const StyledHeader = styled.header`
     background-color: var(--bg-light);
     height: 60px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 5em;
     color: var(--orange);
 
     & div {
@@ -20,16 +18,22 @@ export const StyledHeader = styled.header`
         }
     }
 
+    & form {
+        display: flex;
+        align-items: center;
+    }
+
     & input {
         background-color: var(--bg-dark);
         border: 1px solid var(--orange);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
         padding: .25em 1.5em;
         font-size: 18px;
         color: var(--orange);
+        max-width: 275px;
+        width: 50vw;
 
         &:focus {
-            border: 2px solid var(--orange);
             outline: none; 
         }
 
@@ -37,14 +41,27 @@ export const StyledHeader = styled.header`
             color: var(--orange);
         }
     }
-`;
 
-export const MoonIcon = styled(BsFillMoonStarsFill)`
-    font-size: 18px;
-    margin-left: 5px;
-`;
+    & button {
+        background-color: var(--bg-dark);
+        border: 1px solid var(--orange);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        padding: .3em .8em .1em .4em;
+        font-size: 18px;
+        color: var(--orange); 
 
-export const SunIcon = styled(BsFillSunFill)`
-    font-size: 20px;
-    margin-left: 7px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        height: auto;
+        padding-bottom: .75em;
+
+        & input {
+            width: 75vw;
+        }
+    }
 `;

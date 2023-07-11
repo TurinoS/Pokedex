@@ -1,5 +1,6 @@
 import { ApiContextProvider } from "@/context/ContextApi"
 import { ModalContextProvider } from "@/context/ModalContext"
+import { SearchContextProvider } from "@/context/SearchContext"
 
 export const metadata = {
   title: 'Pokédex',
@@ -15,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <ApiContextProvider>
         <ModalContextProvider>
-          <body>{children}</body>
+          <SearchContextProvider>
+            <body>{children}</body>
+          </SearchContextProvider>
         </ModalContextProvider>
       </ApiContextProvider>
     </html>
