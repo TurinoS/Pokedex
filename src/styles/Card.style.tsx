@@ -14,7 +14,19 @@ const StyledCard = styled.div`
       cursor: pointer;
       transform: scale(1.1);
     }
-    
+
+    @media (max-width: 390px) {
+      width: 140px;
+
+      & h2 {
+        font-size: 20px;
+      }
+
+      & li {
+        font-size: 14px;
+      }
+    }
+
     & span {
         background-color: var(--bg-light);
         width: 100%;
@@ -44,6 +56,8 @@ const StyledCard = styled.div`
     width: 100%;
     text-align: center;
   }
+
+  
 `
 
 export default StyledCard;
