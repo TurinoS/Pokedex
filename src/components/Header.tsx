@@ -1,13 +1,13 @@
-import { StyledHeader } from "@/styles/Header.style";
+import { StyledHeader, StyledXIcon } from "@/styles/Header.style";
 import logo from "../assets/great-ball-icon.png";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { SearchContext } from "@/context/SearchContext";
-import {FaSearch} from 'react-icons/fa'
-import { ApiContext } from "@/context/ContextApi";
+import { FaSearch } from 'react-icons/fa'
+
 
 export default function Header() {
-    const { setSearchedPokemon, takePokemon } = useContext(SearchContext)
+    const { setSearchedPokemon, takePokemon, fetchFailed } = useContext(SearchContext)
 
     function searchTyping(e: React.ChangeEvent<HTMLInputElement>) {
         setSearchedPokemon(e.target.value)
@@ -20,6 +20,7 @@ export default function Header() {
                 <h1>PokéDex</h1>
             </div>
             <form>
+                {fetchFailed && <StyledXIcon />}
                 <input onChange={searchTyping} type="text" placeholder="Search a pokémon..." />
                 <button type="submit" onClick={takePokemon}><FaSearch /></button>
             </form>

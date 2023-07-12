@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { GrNext, GrPrevious } from "react-icons/gr";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ModalContext } from "@/context/ModalContext";
 import { ApiContext } from "@/context/ContextApi";
 
@@ -34,19 +34,32 @@ const StyledPagination = styled.div`
 export default function Pagination() {
   const { toggleModal, modalOpen } = useContext(ModalContext);
   const { currentPage, nextPage, previousPage } = useContext(ApiContext);
+  const [canChangePage, setCanChangePage] = useState(true);
 
   function handleNextPage() {
     if (modalOpen) {
       toggleModal();
     }
-    nextPage();
+    if (canChangePage) {
+      setCanChangePage(false);
+      nextPage();
+      setTimeout(() => {
+        setCanChangePage(true);
+      }, 1500);
+    }
   }
 
   function handlePreviousPage() {
     if (modalOpen) {
       toggleModal();
     }
-    previousPage();
+    if (canChangePage) {
+      setCanChangePage(false);
+      previousPage();
+      setTimeout(() => {
+        setCanChangePage(true);
+      }, 1500);
+    }
   }
 
   return (

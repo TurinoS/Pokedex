@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BiX } from 'react-icons/bi'
 
 export const StyledHeader = styled.header`
     background-color: var(--bg-light);
@@ -65,3 +66,7 @@ export const StyledHeader = styled.header`
         }
     }
 `;
+
+export const StyledXIcon = styled(BiX)`
+    font-size: 36px;
+`
